@@ -3,11 +3,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
-const PORT = 8080;
+const path = require('path');
 
 // configure dotenv
 dotenv.config();
+
+const PORT = process.env.PORT;
 
 // initialize the app
 const app = express();
@@ -25,18 +26,30 @@ if (!process.env.ATLAS_URI) {
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri);
 const connection = mongoose.connection;
-connection.on('error', (error) => console.error(error))
+connection.on('error', (error) => console.error(error));
 connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
-})
+});
 
 // require and use route files
-const usersRouter = require('./routes/users');
-// ensure this file exists in the "routes directory"
+const usersRouter = require('./routes/user');
+const recipesRouter = require('./routes/recipe');
 
-app.use('/users', usersRouter);
+// the /users part of the site will be handled by usersRouter
+app.use('/', usersRouter);
+// the recipe part of the site will be handled by recipesRouter
+app.use('/recipe', recipesRouter);
 
-// server listen
-app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+// serve static files from the frontend
+const frontendPath = path.join(__dirname, '../frontend/dist');
+app.use(express.static(frontendPath));
+
+// fallback to serving the frontend for unmatched routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
+// start the server
+app.listen(PORT, (err) => {
+    console.log(`Server is running on port: ${PORT}`);
 });
