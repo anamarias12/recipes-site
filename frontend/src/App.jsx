@@ -1,6 +1,8 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 import axios from "axios";
 
 const getThreeRecipes = async () => {
@@ -14,15 +16,23 @@ const getThreeRecipes = async () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />, loader: getThreeRecipes,  // Pass fetched data to Home component
+    element: <Home />, loader: getThreeRecipes,
+  },
+  {
+    path: "/signUp",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   }
 ]);
 
 function App() {
   return (
-    <>
+    <div>
       <RouterProvider router={router} />
-    </>
+    </div>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import Top3Recipes from "../../components/Top3Recipes";
 
@@ -13,8 +14,12 @@ const Home = ({ recipes }) => {
           <a href="#add-recipe">Add Recipe</a>
         </nav>
         <div className="auth-buttons">
-          <button className="login">Login</button>
-          <button className="register">Register</button>
+          <Link to="/login">
+            <button className="login">Login</button>
+          </Link>
+          <Link to="/signUp">
+            <button className="register">Register</button>
+          </Link>
         </div>
       </header>
 

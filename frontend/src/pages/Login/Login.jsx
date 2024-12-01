@@ -1,58 +1,60 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate
 
-const Login = () => {
-  const navigate = useNavigate();
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleLogin = async (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/user/login", {
-        email,
-        password,
-      });
-
-      // Save the token to localStorage or context for authentication
-      localStorage.setItem("token", response.data.token);
-
-      // Redirect to homepage or dashboard
-      navigate("/");
+      const res = await axios.post(`http://localhost:8080/login`, { email, password });
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      
+      // Redirect to Home page after successful login
+      navigate('/');
     } catch (err) {
-      setError("Invalid credentials");
+      console.error(err);
+      setError(err?.response?.data?.error || 'Something went wrong');
     }
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+    <div>
+      <form className='form' onSubmit={handleOnSubmit}>
+        <div className='form-control'>
+          <label>Email</label>
+          <input 
+            type="email" 
+            className='input' 
+            onChange={(e) => setEmail(e.target.value)} 
+            required 
           />
         </div>
-        <div>
-          <label>Password:</label>
-          <input
+        <div className='form-control'>
+          <label>Password</label>
+          <input 
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            className='input' 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
           />
         </div>
-        {error && <div className="error">{error}</div>}
-        <button type="submit">Login</button>
+        <button type='submit'>Login</button>
+        {error && <h6 className='error'>{error}</h6>}
+        
+        {/* Link to the Sign-Up page */}
+        <p>
+          Don't have an account?{" "}
+          <Link to="/signUp">Create new account</Link>
+        </p>
       </form>
     </div>
   );
-};
+}
 
 export default Login;
