@@ -15,21 +15,32 @@ const getRecipe=async(req,res)=>{
     res.json(recipe)
 }
 
-const addRecipe=async(req,res)=>{
-    console.log(req.user)
-    const {title,description,rating,creator,createdAt}=req.body 
+const addRecipe = async (req, res) => {
+    // Destructure only title and description from the request body
+    const { title, description, rating} = req.body; 
 
-    if(!title || !description || !creator)
-    {
-        res.json({message:"Required fields can't be empty"})
+    // Ensure that title and description are provided
+    if (!title || !description) {
+        return res.status(400).json({ message: "Title and description are required." });
     }
 
-    const newRecipe=await Recipes.create({
-        title,description,rating,creator,createdAt,
-        createdBy:req.user.id
-    })
-   return res.json(newRecipe)
-}
+    try {
+        // Create the new recipe, automatically assigning the creator and createdAt fields
+        const newRecipe = await Recipes.create({
+            title,
+            description,
+            rating,
+            creator: req.user.id,  // Automatically use the authenticated user's ID as creator
+            createdAt: new Date()   // Automatically set the current date
+        });
+
+        // Return the newly created recipe
+        return res.status(201).json(newRecipe);
+    } catch (error) {
+        return res.status(500).json({ message: "Failed to add recipe.", error: error.message });
+    }
+};
+
 
 const editRecipe=async(req,res)=>{
     const {title,description,rating,creator,createdAt}=req.body 

@@ -1,7 +1,8 @@
 import React from "react";
 import "./Home.css";
+import Top3Recipes from "../../components/Top3Recipes";
 
-const Home = () => {
+const Home = ({ recipes }) => {
   return (
     <div className="home">
       {/* Header Section */}
@@ -18,7 +19,6 @@ const Home = () => {
       </header>
 
       {/* Hero Section */}
-      <header className="header"></header>
       <div className="hero">
         <h1>chef<span>IT</span></h1>
         <div className="hero-background"></div>
@@ -27,23 +27,7 @@ const Home = () => {
       {/* Top Rated Recipes Section */}
       <section className="top-rated">
         <h2>Top rated recipes</h2>
-        <div className="recipes-grid">
-          <div className="recipe">
-            <h3>Supă la plic</h3>
-            <p>★★★★☆</p>
-            <p className="author">Author: Mari</p>
-          </div>
-          <div className="recipe">
-            <h3>Plăcinte cu păstramă</h3>
-            <p>★★★★★</p>
-            <p className="author">Author: Gabriel</p>
-          </div>
-          <div className="recipe">
-            <h3>Cartofi prăjiți</h3>
-            <p>★★★☆☆</p>
-            <p className="author">Author: Edi</p>
-          </div>
-        </div>
+        <Top3Recipes recipes={recipes} />
       </section>
 
       {/* Contact Section */}
