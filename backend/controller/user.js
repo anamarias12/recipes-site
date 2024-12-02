@@ -5,32 +5,27 @@ const jwt = require("jsonwebtoken")
 const userSignUp = async (req, res) => {
     const { email, password, username } = req.body;
 
-    // Validate input
     if (!email || !password || !username) {
         return res.status(400).json({ message: "Email, password, and username are required" });
     }
 
-    // Check if email already exists
     let user = await User.findOne({ email });
     if (user) {
         return res.status(400).json({ error: "Email already exists" });
     }
 
-    // Check if username already exists
     let usernameExists = await User.findOne({ username });
     if (usernameExists) {
         return res.status(400).json({ error: "Username already exists" });
     }
 
-    // Hash password and create user
     const hashPwd = await bcrypt.hash(password, 10);
     const newUser = await User.create({
         email,
         password: hashPwd,
-        username // Include username in the user creation
+        username
     });
 
-    // Generate token
     let token = jwt.sign({ email, id: newUser._id }, process.env.SECRET_KEY);
     return res.status(200).json({ token, user: newUser });
 };
@@ -51,8 +46,11 @@ const userLogin = async (req, res) => {
 }
 
 const getUser = async (req, res) => {
-    const user = await User.findById(req.params.id)
-    res.json({email:user.email})
-}
+      const user = await User.findById(req.params.id);
+      res.json({
+        username: user.username,
+        email: user.email,
+      });
+  };
 
 module.exports = { userLogin, userSignUp, getUser }

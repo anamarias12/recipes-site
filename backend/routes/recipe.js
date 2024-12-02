@@ -3,11 +3,11 @@ const { getRecipes, getThreeRecipes, getRecipe, addRecipe, editRecipe, deleteRec
 const verifyToken = require("../middleware/auth");
 const router = express.Router();
 
-router.get("/", getRecipes); // Get all recipes
-router.get("/top3", getThreeRecipes); // Get top 3 recipes
-router.get("/:id", getRecipe); // Get recipe by id
-router.post("/", verifyToken, addRecipe); // Add recipe (requires token)
-router.put("/:id", verifyToken, editRecipe); // Edit recipe (requires token)
-router.delete("/:id", verifyToken, deleteRecipe); // Delete recipe (requires token)
+router.get("/", getRecipes);
+router.get("/top3", getThreeRecipes);
+router.get("/:id", getRecipe);
+router.post("/", verifyToken, addRecipe);
+router.put("/:id", verifyToken, editRecipe);
+router.delete("/:id", verifyToken, deleteRecipe);
 
 module.exports = router;

@@ -1,31 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Top3Recipes from "../../components/Top3Recipes";
 
 const Home = ({ recipes }) => {
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLogin(!!token);
+  }, []);
+
   return (
     <div className="home">
       {/* Header Section */}
       <header className="header">
-        <div className="logo">chef<span>IT</span></div>
+        <div className="logo">
+          chef<span>IT</span>
+        </div>
         <nav>
-          <a href="#recipes">Recipes</a>
-          <a href="#add-recipe">Add Recipe</a>
+          <Link to="/recipes">Recipes</Link>
+          <Link to={isLogin ? "/addRecipe" : "/login"}>Add Recipe</Link>
         </nav>
         <div className="auth-buttons">
-          <Link to="/login">
-            <button className="login">Login</button>
-          </Link>
-          <Link to="/signUp">
-            <button className="register">Register</button>
-          </Link>
+          {isLogin ? (
+            <Link to="/profile">
+              <button className="profile">Profile</button>
+            </Link>
+          ) : (
+            <>
+              <Link to="/login">
+                <button className="login">Login</button>
+              </Link>
+              <Link to="/signUp">
+                <button className="register">Register</button>
+              </Link>
+            </>
+          )}
         </div>
       </header>
 
       {/* Hero Section */}
       <div className="hero">
-        <h1>chef<span>IT</span></h1>
+        <h1>
+          chef<span>IT</span>
+        </h1>
         <div className="hero-background"></div>
       </div>
 
