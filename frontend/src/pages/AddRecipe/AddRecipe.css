@@ -13,18 +13,23 @@ body {
     background-color: #5d87ab;
 }
 
-.form-container {
+.add-recipe-container {
     background-color: #1b3a61;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     padding: 30px;
-    width: 350px;
+    width: 400px;
     text-align: center;
-    position: relative;
+}
+
+.add-recipe-container h1 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
 }
 
 .form-control {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
@@ -35,7 +40,8 @@ label {
     margin-bottom: 5px;
 }
 
-.input {
+input,
+textarea {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
@@ -45,6 +51,7 @@ label {
     margin-bottom: 10px;
     background-color: #ffffff;
     color: #000;
+    resize: none;
 }
 
 button {
@@ -62,20 +69,4 @@ button {
 
 button:hover {
     background-color: #007a23;
-}
-
-p {
-    font-size: 0.9rem;
-    color: white;
-    margin-top: 15px;
-}
-
-p a {
-    color: #00b32c;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-p a:hover {
-    text-decoration: underline;
 }

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import "./AddRecipe.css";
 
 const AddRecipe = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +12,6 @@ const AddRecipe = () => {
     const token = localStorage.getItem("token");
     if (!token) {
       alert("You must be logged in to add a recipe!");
-      navigate("/login");
       return;
     }
 
@@ -29,18 +27,20 @@ const AddRecipe = () => {
       )
       .then(() => {
         alert("Recipe added successfully!");
-        navigate("/");
+        setTitle("");
+        setDescription("");
       })
       .catch((error) => {
         console.error("Error adding recipe:", error);
+        alert("Failed to add recipe. Please try again.");
       });
   };
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
+    <div className="add-recipe-container">
       <h1>Add a New Recipe</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-control">
           <label>Title:</label>
           <input
             type="text"
@@ -49,7 +49,7 @@ const AddRecipe = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-control">
           <label>Description:</label>
           <textarea
             value={description}

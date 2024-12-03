@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./Profile.css";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -37,18 +38,23 @@ const Profile = () => {
   };
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <h1>Profile Page</h1>
-      {user ? (
-        <div>
-          <p><strong>Username:</strong> {user.username}</p>
-          <p><strong>Email:</strong> {user.email}</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        <p>Loading user information...</p>
-      )}
+    <div className="profile-container">
+  <h1>Profile Page</h1>
+  {user ? (
+    <div>
+      <p>
+        <strong>Username:</strong> {user.username}
+      </p>
+      <p>
+        <strong>Email:</strong> {user.email}
+      </p>
+      <button onClick={handleLogout}>Logout</button>
     </div>
+  ) : (
+    <p className="loading">Loading user information...</p>
+  )}
+</div>
+
   );
 };
 

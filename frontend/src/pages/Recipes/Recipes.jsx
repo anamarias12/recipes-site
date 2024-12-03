@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Recipes.css";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -16,19 +17,17 @@ const Recipes = () => {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="recipes-container">
       <h1>All Recipes</h1>
       {recipes.length > 0 ? (
-        <ul>
+        <div className="recipes-grid">
           {recipes.map((recipe) => (
-            <li key={recipe._id}>
+            <div className="recipe-card" key={recipe._id}>
               <h3>{recipe.title}</h3>
               <p>{recipe.description}</p>
-              {/* display the username of the creator */}
-              <small>Created by: {recipe.creator ? recipe.creator.username : "Unknown"}</small>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No recipes available.</p>
       )}
