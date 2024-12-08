@@ -6,20 +6,14 @@ export default function Top3Recipes() {
   console.log(recipes);
 
   return (
-    <div className="card-container">
-      {recipes?.length > 0 ? (
-        recipes.map((recipe) => (
-          <div key={recipe._id} className="card">
-            <div className="card-body">
-              <div className="card-title">{recipe.title}</div>
-              <p className="card-description">{recipe.description}</p>
-              <div className="card-rating">Rating: {recipe.rating}</div>
-            </div>
-          </div>
-        ))
-      ) : (
-        <p>No recipes available.</p>
-      )}
+    <div className="recipes-grid">
+      {recipes.map((recipe) => (
+        <div className="recipe-card" key={recipe._id}>
+          <h3>{recipe.title}</h3>
+          <p>{recipe.description}</p>
+          <p className="rating">Rating: {recipe.rating}</p>
+        </div>
+      ))}
     </div>
   );
 }

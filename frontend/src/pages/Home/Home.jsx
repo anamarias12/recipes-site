@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar";
 import "./Home.css";
 import Top3Recipes from "../../components/Top3Recipes";
 
@@ -13,39 +13,13 @@ const Home = ({ recipes }) => {
 
   return (
     <div className="home">
-      {/* Header Section */}
-      <header className="header">
-        <div className="logo">
-          chef<span>IT</span>
-        </div>
-        <nav>
-          <Link to="/recipes">Recipes</Link>
-          <Link to={isLogin ? "/addRecipe" : "/login"}>Add Recipe</Link>
-        </nav>
-        <div className="auth-buttons">
-          {isLogin ? (
-            <Link to="/profile">
-              <button className="profile">Profile</button>
-            </Link>
-          ) : (
-            <>
-              <Link to="/login">
-                <button className="login">Login</button>
-              </Link>
-              <Link to="/signUp">
-                <button className="register">Register</button>
-              </Link>
-            </>
-          )}
-        </div>
-      </header>
+      {/* Navbar */}
+      <Navbar isLogin={isLogin} />
 
       {/* Hero Section */}
       <div className="hero">
-        <h1>
-          chef<span>IT</span>
-        </h1>
-        <div className="hero-background"></div>
+        <div className="hero-text">
+        </div>
       </div>
 
       {/* Top Rated Recipes Section */}
@@ -58,11 +32,15 @@ const Home = ({ recipes }) => {
       <section className="contact-us">
         <h2>Contact us</h2>
         <form className="contact-form">
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
-          <input type="email" placeholder="Email" />
-          <textarea placeholder="Message"></textarea>
-          <button type="submit">Submit</button>
+          <div className="form-left">
+            <input type="text" placeholder="First Name" />
+            <input type="text" placeholder="Last Name" />
+            <input type="email" placeholder="Email" />
+          </div>
+          <div className="form-right">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Submit</button>
+          </div>
         </form>
       </section>
 

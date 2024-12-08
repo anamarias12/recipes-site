@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from "../../components/Navbar";
 import "./Login.css";
 
 function Login() {
@@ -22,33 +23,41 @@ function Login() {
     }
   };
 
+  const isLogin = false;
+
   return (
-    <div className="form-container">
-      <form className="form" onSubmit={handleOnSubmit}>
-        <div className="form-control">
-          <label>Email</label>
-          <input
-            type="email"
-            className="input"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label>Password</label>
-          <input
-            type="password"
-            className="input"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-        {error && <h6 className="error">{error}</h6>}
-        <p>
-          <Link to="/signUp">Create new account</Link>
-        </p>
-      </form>
+    <div>
+      {/* Add Navbar */}
+      <Navbar isLogin={isLogin} />
+
+      {/* Login Form */}
+      <div className="form-container">
+        <form className="form" onSubmit={handleOnSubmit}>
+          <div className="form-control">
+            <label>Email</label>
+            <input
+              type="email"
+              className="input"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label>Password</label>
+            <input
+              type="password"
+              className="input"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+          {error && <h6 className="error">{error}</h6>}
+          <p>
+            <Link to="/signUp">Create new account</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

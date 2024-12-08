@@ -1,165 +1,222 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
- .home {
-    text-align: center;
-    flex-direction: column;
-    height: 600px;
-  }
-  
-  .header {
-    width: 99vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 1px 0 5px rgb(255, 255, 255);
-    position: fixed;
-    top:0;
-    z-index: 10;
-    background-color: #0a2443;
-  }
-  
-  .header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .header .logo span {
-    color: #00b32c;
-  }
-  
-  .header nav a {
-    margin: 0 20px;
-    
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-  }
-  
-  .auth-buttons button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: none;
-    background-color: white;
-    color: #0a2443;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .hero {
-    background-color: #5d87ab;
-    position: relative;
-    min-height: 100vh;
-    width: 99vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    text-align: center;
-    overflow: hidden;
-  }
-  
-  .hero h1 {
-    font-size: 3rem;
-  }
-  
-  .hero h1 span {
-    font-size: 5rem;
-    color: #00b32c;
-  }
-  
-  .hero-background {
-    background-color: #5d87ab;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-    z-index: -1; 
-  }
+.home {
+  text-align: center;
+  flex-direction: column;
+  height: 600px;
+}
 
-  .hero {
-    margin-bottom: 0;
-  }
-  
-  .top-rated {
-    width: 99vw;
-    padding: 0;
-    margin: 0;
-    background-color: #0a2443;
-    color: white;
-  }
-  
-  .top-rated h2 {
-    margin-bottom: 20px;
-  }
-  
-  .recipes-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .recipe {
-    background-color: white;
-    color: #0a2443;
-    padding: 0;
-    margin: 0;
-    border-radius: 10px;
-    width: 150px;
-  }
-  
-  .recipe p.author {
-    font-size: 0.8rem;
-    color: #666;
-  }
-  
-  .top-rated {
-    padding-top: 50px;
-  }
+.header {
+  width: 99vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 1px 0 5px rgb(255, 255, 255);
+  position: fixed;
+  top:0;
+  z-index: 10;
+  background-color: #0a2443;
+}
 
-  .top-rated {
-    padding-bottom: 50px;
-  }
+.header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
-  .contact-us {
-    padding: 30px 0;
-    width: 99vw;
-    background-color: #5d87ab;
-  }
+.header .logo span {
+  color: #00b32c;
+}
+
+.header nav a {
+  margin: 0 20px;
   
-  .contact-form input, .contact-form textarea {
-    width: 90%;
-    max-width: 400px;
-    margin: 10px auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: block;
-  }
-  
-  .contact-form button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #00b32c;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .footer {
-    padding: 2px;
-    padding-bottom: 20px;
-    background-color: #0a2443;
-    color: white;
-  }
-  
-  .footer .social-links a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-    position: relative;
-  }
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.auth-buttons button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  background-color: white;
+  color: #0a2443;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hero {
+  background-color: #ffffff;
+  background-image: url("../../assets/Group 91.png"), url("../../assets/Group.png");
+  background-size: 300px, cover;
+  background-position: center center, center center;
+  background-repeat: no-repeat, no-repeat;
+  position: relative;
+  min-height: 100vh;
+  width: 99vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero h1 span {
+  font-size: 5rem;
+  color: #00b32c;
+}
+
+.hero-background {
+  background-color: #5d87ab;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1; 
+}
+
+.hero {
+  margin-bottom: 0;
+}
+
+.top-rated {
+  width: 100%;
+  padding: 50px 0;
+  background-color: #0a2443;
+  color: white;
+}
+
+.top-rated h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.top-rated .recipes-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.top-rated .recipe-card {
+  background-color: white;
+  color: #0a2443;
+  padding: 15px;
+  border-radius: 10px;
+  width: 400px; /* Set card width */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.top-rated .recipe-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.top-rated .recipe-card p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.top-rated .recipe-card .rating {
+  font-weight: bold;
+  color: #00b32c;
+  margin-top: 10px;
+}
+
+.contact-us {
+  padding: 30px 0;
+  width: 99vw;
+  background-color: #5d87ab;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.contact-form {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 1200px;
+  gap: 50px; 
+}
+
+.contact-form .form-left,
+.contact-form .form-right {
+  flex: 1;
+}
+
+.contact-form .form-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form .form-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #000;
+}
+
+.contact-form textarea {
+  height: 150px;
+  resize: none;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #00b32c;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.contact-form button:hover {
+  background-color: #007a23;
+}
+
+.contact-us h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.footer {
+  padding: 2px;
+  padding-bottom: 20px;
+  background-color: #0a2443;
+  color: white;
+}
+
+.footer .social-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  position: relative;
+}

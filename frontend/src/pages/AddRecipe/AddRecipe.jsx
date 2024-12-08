@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Navbar from "../../components/Navbar";
 import "./AddRecipe.css";
 
 const AddRecipe = () => {
@@ -37,28 +38,34 @@ const AddRecipe = () => {
   };
 
   return (
-    <div className="add-recipe-container">
-      <h1>Add a New Recipe</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-control">
-          <label>Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label>Description:</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <button type="submit">Add Recipe</button>
-      </form>
+    <div className="add-recipe-page">
+      {/* Navbar */}
+      <Navbar isLogin={!!localStorage.getItem("token")} /> {/* Determine login state */}
+
+      {/* Add Recipe Form */}
+      <div className="add-recipe-container">
+        <h1>Add a New Recipe</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="form-control">
+            <label>Title:</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label>Description:</label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            ></textarea>
+          </div>
+          <button type="submit">Add Recipe</button>
+        </form>
+      </div>
     </div>
   );
 };
