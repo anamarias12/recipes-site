@@ -45,10 +45,23 @@ body.home {
 
 .recipes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   width: 100%;
 }
+
+@media (min-width: 1200px) {
+  .recipes-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .recipes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 
 .recipe-card {
   background-color: white;
@@ -75,4 +88,25 @@ body.home {
   font-size: 1rem;
   margin: 10px 0;
   color: #666;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar input {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: #00b32c;
+  box-shadow: 0 0 5px rgba(0, 179, 44, 0.5);
 }
