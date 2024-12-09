@@ -43,6 +43,7 @@ PAGINA DE PROFIL:
 - Accesarea paginii de adăugare rețete disponibila doar pentru utilizatorul logat.
 
 PAGINA DE RETETE:
+- Searchbar
 - Vizualizare a tuturor rețetelor disponibile.
 - In backend am creat si posibilitatea de a sterge sau modifica o reteta.
 
@@ -54,3 +55,9 @@ CE AM INVATAT?
 - Utilizarea Figma pentru a crea și adapta designuri pentru frontend.
 - Configurarea JWT pentru autentificare sigură.
 - Organizarea și comunicarea eficientă între frontend și backend folosind REST API.
+
+CUM SE RULEAZA?
+- 2 terminale deschise
+- unul este deschis in directorul backend si unul este deschis in directorul frontend
+- in backend: sa fie deschis mongodb: sudo systemctl start mongod apoi npm run dev
+- in frontend: npm run dev

@@ -38,3 +38,26 @@
 .navbar .auth-buttons button:hover {
   background-color: #007a23;
 }
+
+@media (max-width: 768px) {
+  .navbar nav a {
+    font-size: 0.9rem;
+    margin: 0 5px;
+  }
+  
+  .navbar .auth-buttons button {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar nav a {
+    font-size: 0.8rem;
+  }
+  
+  .navbar .auth-buttons button {
+    font-size: 0.7rem;
+    padding: 5px 8px;
+  }
+}
